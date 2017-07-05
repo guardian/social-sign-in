@@ -14,5 +14,4 @@ case class JWTUser(id: String,
 
 
 case class IDToken(token: String)
-
 case class AccessTokenClientID(id: String)
