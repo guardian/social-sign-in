@@ -39,6 +39,7 @@ scmInfo := Some(ScmInfo(
 description := "Scala library for Social Sign-in."
 
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+releaseIgnoreUntrackedFiles := true
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases")
