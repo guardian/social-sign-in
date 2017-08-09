@@ -1,4 +1,9 @@
+import ReleaseTransformations._
 import Dependencies._
+
+name := "social-signin"
+
+organization := "com.gu"
 
 version := "0.1.0"
 scalaVersion := "2.11.8"
@@ -24,4 +29,32 @@ scalacOptions ++= Seq(
 )
 
 scalacOptions in doc in Compile := Nil
+crossScalaVersions := Seq(scalaVersion.value)
 
+scmInfo := Some(ScmInfo(
+  url("https://github.com/guardian/social-sign-in"),
+  "scm:git:git@github.com:guardian/social-sign-in.git"
+))
+
+description := "Scala library for Social Sign-in."
+
+licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases")
+)
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  ReleaseStep(action = Command.process("publishSigned", _)),
+  setNextVersion,
+  commitNextVersion,
+  ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
+  pushChanges
+)
