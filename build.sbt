@@ -28,13 +28,6 @@ scalacOptions ++= Seq(
   "-Xfuture"
 )
 
-scalacOptions ++= {
-  CrossVersion.partialVersion(scalaVersion.value) match {
-    case Some((2, n)) if n >= 12 => Seq("-Ypartial-unification")
-    case _ => Seq.empty
-  }
-}
-
 scalacOptions in doc in Compile := Nil
 crossScalaVersions := Seq(scalaVersion.value, "2.11.8")
 
