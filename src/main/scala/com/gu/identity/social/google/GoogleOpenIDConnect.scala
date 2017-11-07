@@ -8,17 +8,16 @@ import com.gu.identity.social.SocialAuthErrors.{AuthError, MissingScope, TokenVe
 import com.gu.identity.social.jwt.IDToken
 import com.gu.identity.social.jwt.JWTUser
 import akka.http.scaladsl.model.Uri
-import cats.data.Xor
 
 import collection.JavaConverters._
 import scala.util.Try
 
 object GoogleOpenIDConnect {
 
-  def fetchSocialUser(idToken: IDToken, googleClientID: GoogleClientID): Xor[AuthError, JWTUser] =
+  def fetchSocialUser(idToken: IDToken, googleClientID: GoogleClientID): Either[AuthError, JWTUser] =
     verifyToken(idToken, googleClientID)
 
-  def verifyToken(idToken: IDToken, googleClientID: GoogleClientID): Xor[AuthError, JWTUser] = {
+  def verifyToken(idToken: IDToken, googleClientID: GoogleClientID): Either[AuthError, JWTUser] = {
     val verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport, JacksonFactory.getDefaultInstance)
       .setAudience(List(googleClientID.id).asJavaCollection)
       .setIssuer("https://accounts.google.com")
@@ -28,7 +27,7 @@ object GoogleOpenIDConnect {
     googleIdToken.map {
       token =>
         val payload = token.getPayload
-        Xor.right(new JWTUser(
+        Right(new JWTUser(
           payload.getSubject,
           payload.getEmail,
           payload.getEmailVerified,
@@ -40,8 +39,8 @@ object GoogleOpenIDConnect {
         ))
     }.recover {
       case e: NullPointerException => {
-        Xor.left(MissingScope)
+        Left(MissingScope)
       }
-    }.getOrElse(Xor.left(TokenVerificationFailed))
+    }.getOrElse(Left(TokenVerificationFailed))
   }
 }

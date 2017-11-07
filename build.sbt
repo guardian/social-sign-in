@@ -6,7 +6,7 @@ name := "social-signin"
 organization := "com.gu"
 
 version := "0.1.0"
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.4"
 
 libraryDependencies ++= deps
 
@@ -28,8 +28,15 @@ scalacOptions ++= Seq(
   "-Xfuture"
 )
 
+scalacOptions ++= {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, n)) if n >= 12 => Seq("-Ypartial-unification")
+    case _ => Seq.empty
+  }
+}
+
 scalacOptions in doc in Compile := Nil
-crossScalaVersions := Seq(scalaVersion.value)
+crossScalaVersions := Seq(scalaVersion.value, "2.11.8")
 
 scmInfo := Some(ScmInfo(
   url("https://github.com/guardian/social-sign-in"),
