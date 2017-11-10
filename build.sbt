@@ -5,8 +5,7 @@ name := "social-signin"
 
 organization := "com.gu"
 
-version := "0.1.0"
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.4"
 
 libraryDependencies ++= deps
 
@@ -29,7 +28,7 @@ scalacOptions ++= Seq(
 )
 
 scalacOptions in doc in Compile := Nil
-crossScalaVersions := Seq(scalaVersion.value)
+crossScalaVersions := Seq(scalaVersion.value, "2.11.8")
 
 scmInfo := Some(ScmInfo(
   url("https://github.com/guardian/social-sign-in"),
@@ -49,6 +48,11 @@ releaseIgnoreUntrackedFiles := true
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases")
+)
+
+publishTo := Some(
+  if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
+  else Opts.resolver.sonatypeReleases
 )
 
 releaseProcess := Seq[ReleaseStep](
