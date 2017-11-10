@@ -50,6 +50,11 @@ resolvers ++= Seq(
   Resolver.sonatypeRepo("releases")
 )
 
+publishTo := Some(
+  if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
+  else Opts.resolver.sonatypeReleases
+)
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
