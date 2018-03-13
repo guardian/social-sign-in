@@ -7,7 +7,7 @@ crossScalaVersions := Seq(scalaVersion.value, "2.11.8")
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka"           %%  "akka-http"         % "10.1.0",
-  "com.google.api-client"       %   "google-api-client" % "1.22.0",
+  "com.google.api-client"       %   "google-api-client" % "1.23.0",
   "com.typesafe.scala-logging"  %%  "scala-logging"     % "3.7.2"
 )
 
