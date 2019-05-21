@@ -17,7 +17,7 @@ resolvers ++= Seq(
 
 publishTo := Some(
   if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
-  else Opts.resolver.sonatypeReleases
+  else Opts.resolver.sonatypeStaging
 )
 
 releaseCrossBuild := true
