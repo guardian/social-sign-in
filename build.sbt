@@ -24,8 +24,7 @@ publishTo := Some(
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
 pomExtra :=
-  <url>https://github.com/guardian/social-signin</url>
-    <developers>
+ <developers>
       <developer>
         <id>dominickendrick</id>
         <name>Dominic Kendrick</name>
