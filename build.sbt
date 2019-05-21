@@ -31,7 +31,7 @@ pomExtra :=
         <name>Dominic Kendrick</name>
         <url>https://github.com/dominickendrick</url>
       </developer>
-    </developers>,
+    </developers>
 
 releaseCrossBuild := true
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
