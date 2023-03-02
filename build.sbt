@@ -7,8 +7,8 @@ crossScalaVersions := Seq(scalaVersion.value, "2.11.8", "2.12.4")
 sonatypeProfileName := "com.gu"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka"           %%  "akka-http"         % "10.1.13",
-  "com.google.api-client"       %   "google-api-client" % "1.31.1",
+  "com.typesafe.akka"           %%  "akka-http"         % "10.1.15",
+  "com.google.api-client"       %   "google-api-client" % "1.35.0",
   "com.typesafe.scala-logging"  %%  "scala-logging"     % "3.9.2"
 )
 
