@@ -2,7 +2,7 @@ package com.gu.identity.social.google
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
 import com.google.api.client.http.javanet.NetHttpTransport
-import com.google.api.client.json.jackson2.JacksonFactory
+import com.google.api.client.json.gson.GsonFactory
 import com.gu.identity.social.Google
 import com.gu.identity.social.SocialAuthErrors.{AuthError, MissingScope, TokenVerificationFailed}
 import com.gu.identity.social.jwt.IDToken
@@ -18,7 +18,7 @@ object GoogleOpenIDConnect {
     verifyToken(idToken, googleClientID)
 
   def verifyToken(idToken: IDToken, googleClientID: GoogleClientID): Either[AuthError, JWTUser] = {
-    val verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport, JacksonFactory.getDefaultInstance)
+    val verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport, GsonFactory.getDefaultInstance)
       .setAudience(List(googleClientID.id).asJavaCollection)
       .setIssuer("https://accounts.google.com")
       .build();
