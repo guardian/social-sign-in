@@ -3,7 +3,6 @@ import ReleaseTransformations._
 name := "social-signin"
 organization := "com.gu"
 scalaVersion := "2.13.4"
-crossScalaVersions := Seq(scalaVersion.value, "2.11.8", "2.12.4")
 sonatypeProfileName := "com.gu"
 
 libraryDependencies ++= Seq(
@@ -48,4 +47,3 @@ releaseProcess := Seq[ReleaseStep](
   releaseStepCommand("sonatypeReleaseAll"),
   pushChanges
 )
-
