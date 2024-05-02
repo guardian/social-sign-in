@@ -7,7 +7,7 @@ import com.gu.identity.social.Google
 import com.gu.identity.social.SocialAuthErrors.{AuthError, MissingScope, TokenVerificationFailed}
 import com.gu.identity.social.jwt.IDToken
 import com.gu.identity.social.jwt.JWTUser
-import akka.http.scaladsl.model.Uri
+import org.apache.pekko.http.scaladsl.model.Uri
 
 import collection.JavaConverters._
 import scala.util.Try

@@ -1,6 +1,6 @@
 package com.gu.identity.social.jwt
 
-import akka.http.scaladsl.model.Uri
+import org.apache.pekko.http.scaladsl.model.Uri
 import com.gu.identity.social.Network
 
 case class JWTUser(id: String,
