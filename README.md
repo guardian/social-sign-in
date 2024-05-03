@@ -1,12 +1,12 @@
-Cross publish library for 2.11 and 2.12 with
+Publish library with
 
 ```
-sbt "release cross"
+sbt "release"
 ```
 
 Import library with:
 ```scala
-libraryDependencies += "com.gu" %% "social-signin" % "0.1.0"
+libraryDependencies += "com.gu" %% "social-signin" % "<latest-version>"
 
 ```
 
