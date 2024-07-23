@@ -7,7 +7,7 @@ sonatypeProfileName := "com.gu"
 
 libraryDependencies ++= Seq(
   "org.apache.pekko"           %%  "pekko-http"         % "1.0.1",
-  "com.google.api-client"       %   "google-api-client" % "1.35.0",
+  "com.google.api-client"       %   "google-api-client" % "2.2.0",
   "com.typesafe.scala-logging"  %%  "scala-logging"     % "3.9.2"
 )
 
